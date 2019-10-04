@@ -1,0 +1,2 @@
+include ':AudioLearning', ':mp4player', ':cameradisplay', ':mediaextract', ':ffmpegplayer', ':videorecorder', ':publiclib'
+rootProject.name='VideoLearning'
