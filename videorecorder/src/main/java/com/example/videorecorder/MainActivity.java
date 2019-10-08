@@ -164,6 +164,9 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         }
     }
 
+    /**
+     * 释放camera资源
+     */
     private void freeCameraResource() {
         if (mCamera != null) {
             mCamera.setPreviewCallback(null);
@@ -174,6 +177,9 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         }
     }
 
+    /**
+     * 初始化camera参数
+     */
     private void initParameters() {
         Camera.Parameters parameters = mCamera.getParameters();
         CamcorderProfile camcorderProfile = CamcorderProfile.get(CamcorderProfile.QUALITY_1080P);
@@ -212,6 +218,11 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         freeCameraResource();
     }
 
+    /**
+     * 开始录像
+     *
+     * @param onRecordListener 录像监听
+     */
     public void record(OnRecordListener onRecordListener) {
         mOnRecordListener = onRecordListener;
         createRecordDir();
@@ -239,6 +250,9 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         }
     }
 
+    /**
+     * 停止录像、释放录像资源
+     */
     public void stop() {
         stopRecord();
         releaseRecord();
@@ -247,6 +261,9 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         mCamera.lock();
     }
 
+    /**
+     * 释放录像资源
+     */
     private void releaseRecord() {
         if (mMediaRecorder != null) {
             mMediaRecorder.setOnErrorListener(null);
@@ -259,6 +276,9 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         }
     }
 
+    /**
+     * 停止录像
+     */
     private void stopRecord() {
         if (mMediaRecorder != null) {
             mMediaRecorder.setOnErrorListener(null);
@@ -271,6 +291,11 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         }
     }
 
+    /**
+     * 初始化录像
+     *
+     * @param orientationHintDegree
+     */
     private void initRecord(int orientationHintDegree) {
         try {
             if (mMediaRecorder == null) {
@@ -317,6 +342,9 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         }
     }
 
+    /**
+     * 创建视频文件
+     */
     private void createRecordDir() {
         File sampleDir = new File(Environment.getExternalStorageDirectory().getPath() + "/temp");
         if (!sampleDir.exists()) {
@@ -358,6 +386,9 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         return getString(R.string.tv_show_time, second, lSecond);
     }
 
+    /**
+     * 获取camera信息
+     */
     private void getCameraInfo() {
         Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
         int cameras = Camera.getNumberOfCameras();
