@@ -1,6 +1,9 @@
-package com.example.videorecorder;
+package com.example.videorecorder.record;
 
-interface OnRecordListener {
+/**
+ * @author jiazhu
+ */
+public interface OnRecordListener {
     /**
      * 录制完成
      */
